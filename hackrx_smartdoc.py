@@ -108,6 +108,7 @@ class InsuranceClaimsProcessor:
     def _setup_tesseract(self):
     """Tesseract setup disabled for cloud deployment"""
     pass
+
     
     def safe_prompt(self, user_prompt: str) -> str:
         """Add safety prefix to all prompts"""
