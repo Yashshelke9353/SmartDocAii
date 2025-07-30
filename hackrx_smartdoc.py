@@ -106,8 +106,8 @@ class InsuranceClaimsProcessor:
             nltk.download('omw-1.4', quiet=True)
     
     def _setup_tesseract(self):
-    """Tesseract setup disabled for cloud deployment"""
-    pass
+        """Tesseract setup disabled for cloud deployment"""
+        pass
 
     
     def safe_prompt(self, user_prompt: str) -> str:
