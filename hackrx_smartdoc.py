@@ -145,9 +145,9 @@ class InsuranceClaimsProcessor:
             return ""
     
     def extract_text_with_ocr(self, pdf_path: str) -> str:
-    """OCR disabled for cloud deployment"""
-    st.info("📝 OCR functionality disabled for cloud deployment. Using text extraction only.")
-    return ""
+        """OCR disabled for cloud deployment"""
+        st.info("📝 OCR functionality disabled for cloud deployment. Using text extraction only.")
+        return ""
     
     def preprocess_text(self, text: str) -> List[str]:
         """Clean and preprocess text"""
