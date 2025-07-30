@@ -1,7 +1,5 @@
 import streamlit as st
 import fitz
-import pytesseract
-from pdf2image import convert_from_path
 import nltk
 import re
 import os
@@ -108,8 +106,8 @@ class InsuranceClaimsProcessor:
             nltk.download('omw-1.4', quiet=True)
     
     def _setup_tesseract(self):
-        """Configure Tesseract OCR"""
-        pytesseract.pytesseract.tesseract_cmd = self.config.TESSERACT_CMD
+    """Tesseract setup disabled for cloud deployment"""
+    pass
     
     def safe_prompt(self, user_prompt: str) -> str:
         """Add safety prefix to all prompts"""
@@ -146,23 +144,9 @@ class InsuranceClaimsProcessor:
             return ""
     
     def extract_text_with_ocr(self, pdf_path: str) -> str:
-        """Extract text using OCR on PDF images"""
-        try:
-            logger.info("Performing OCR on PDF images")
-            with tempfile.TemporaryDirectory() as tempdir:
-                pages = convert_from_path(pdf_path, 300)
-                ocr_text = ""
-                
-                for i, page in enumerate(pages):
-                    if i >= 5:  # Limit OCR to first 5 pages for performance
-                        break
-                    ocr_text += pytesseract.image_to_string(page)
-                
-                return ocr_text
-        except Exception as e:
-            logger.warning(f"OCR extraction failed: {e}")
-            st.warning("OCR processing failed. Using text extraction only.")
-            return ""
+    """OCR disabled for cloud deployment"""
+    st.info("📝 OCR functionality disabled for cloud deployment. Using text extraction only.")
+    return ""
     
     def preprocess_text(self, text: str) -> List[str]:
         """Clean and preprocess text"""
