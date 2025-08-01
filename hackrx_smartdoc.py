@@ -18,17 +18,16 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return {"message": "SmartDoc AI Webhook is Live 🚀"}
+
 @app.post("/api/v1/hackrx/run")
 async def receive_webhook(request: Request):
     data = await request.json()
     print("✅ Webhook data received:", data)
-    documents = data.get("documents", "")
-    return JSONResponse(content={
-        "status": "success",
-        "message": "Webhook received!",
-        "documents": documents
-    })
-    
+    return JSONResponse(content={"status": "Webhook received", "data": data})
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
