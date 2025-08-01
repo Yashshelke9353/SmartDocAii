@@ -12,6 +12,23 @@ from typing import List, Dict, Optional, Any
 import hashlib
 from dataclasses import dataclass
 import pandas as pd
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
+
+app = FastAPI()
+
+@app.post("/api/v1/hackrx/run")
+async def receive_webhook(request: Request):
+    data = await request.json()
+    print("✅ Webhook data received:", data)
+    documents = data.get("documents", "")
+    return JSONResponse(content={
+        "status": "success",
+        "message": "Webhook received!",
+        "documents": documents
+    })
+    
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

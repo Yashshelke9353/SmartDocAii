@@ -4,3 +4,6 @@ requests
 pandas
 nltk
 python-dotenv
+fastapi
+uvicorn
+python-dotenv
